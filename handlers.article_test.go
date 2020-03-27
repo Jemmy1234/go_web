@@ -14,7 +14,6 @@ import (
 // the HTTP code 200 for an unauthenticated user
 func TestShowIndexPageUnauthenticated(t *testing.T) {
 	r := getRouter(true)
-
 	r.GET("/", showIndexPage)
 
 	// Create a request to send to the above route
@@ -22,7 +21,7 @@ func TestShowIndexPageUnauthenticated(t *testing.T) {
 
 	testHTTPResponse(t, r, req, func(w *httptest.ResponseRecorder) bool {
 		// Test that the http status code is 200
-		statusOK := w.code == http.StatusOK
+		statusOK := w.Code == http.StatusOK
 
 		// Test that the page title is "Home Page"
 		// You can carry out a lot more detailed tests using libraries that can
@@ -33,4 +32,5 @@ func TestShowIndexPageUnauthenticated(t *testing.T) {
 
 		return statusOK && pageOK
 	})
+
 }
